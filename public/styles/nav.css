@@ -1,4 +1,7 @@
 nav {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
   height: 120px;
   width: 100vw;
   padding-left: 1.5em;
@@ -9,4 +12,10 @@ nav {
 
 nav span {
   font-family: 'Bungee', sans-serif;
+  font-size: 48px;
+}
+
+.new-tweet {
+  justify-content: right;
+  text-align: center;
 }
