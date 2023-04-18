@@ -1,0 +1,18 @@
+
+.new-tweet {
+  display: flex;
+  margin-top: 50px;
+}
+
+textarea {
+  background: transparent;
+  color: #000000;
+  border: 0 none;
+  outline: none;
+}
+
+button {
+  background-color: #4056A1;
+  font-family: 'Bungee', sans-serif;
+  color: #FFFFFF;
+}
