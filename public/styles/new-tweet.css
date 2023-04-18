@@ -1,15 +1,27 @@
 
-.new-tweet {
+.container {
   display: flex;
+  height: 120px;
+  width: 100vw;
   margin-top: 50px;
 }
 
 textarea {
+  width: 100%;
   background: transparent;
   color: #000000;
-  border: 0 none;
   outline: none;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 4px solid black;
 }
+
+.new-tweet-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
 
 button {
   background-color: #4056A1;
