@@ -13,7 +13,7 @@ $(document).ready(function() {
       counter.addClass("invalid");
     } else {
       counter.removeClass("invalid");
-    }
+    };
     
   });
 

@@ -1,6 +1,6 @@
 .new-tweet {
   margin-top: 50px;
-};
+}
 
 textarea {
   width: 100%;
@@ -13,12 +13,12 @@ textarea {
   border-right: 0px;
   border-bottom: 4px solid black;
   margin-bottom: 10px;
-};
+}
 
 .new-tweet-footer {
   display: flex;
   justify-content: space-between;
-};
+}
 
 
 button {
@@ -26,13 +26,13 @@ button {
   font-size: 22px;
   font-family: 'Bungee', sans-serif;
   color: #FFFFFF;
-};
+}
 
 .counter {
   font-weight: bold;
   font-family: 'Bungee', sans-serif;
-};
+}
 
-.counter.invalid  {
-  color: red;
-};
+.counter.invalid {
+  color:red;
+}
