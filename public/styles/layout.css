@@ -30,10 +30,8 @@ body {
  }
 
  main {
-  display:flex;
   width: 90%;
   margin-left: 5%;
   margin-right: 5%;
-  justify-content: center;
   background-color: #f4f1ec;
  }
