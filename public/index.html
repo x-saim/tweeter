@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -42,10 +43,9 @@
           <i class="fa-solid fa-angles-down" style="color: #ff0000;"></i>
         </p>
       </div>
-
     </nav>
 
-    <header>
+    <header id="profile">
       <div>
           <img src="/images/profile-hex.png"> 
       </div>
@@ -57,7 +57,7 @@
 
 
     <!-- Page-specific (main) content here -->
-    <main class="container">
+    <main id="container">
       <section class="new-tweet">
         <div>
           <form id="tweet-form" method="POST" action="/tweets" enctype="application/x-www-form-urlencoded">
@@ -69,6 +69,47 @@
           </form>
         </div>
       </section>
+
+      <section>
+        <article class="tweet">
+          <header>
+            <div class="user-name">
+              <img id="avatar" src="" width="50" height="50">
+              <p id="user-name">User name</p>
+            </div>
+            <div class="user-handle">
+              <a id="user-handle" href="www.example.com">@User Handle</a>
+            </div>
+
+          </header>
+          <div class="content">
+            <p>
+              This is the content of the tweet.
+            </p>
+          </div>
+
+          <footer>
+            <div class="time">
+              <p>
+                Time
+              </p>
+            </div>
+            <div class="icons">
+              <p class="flag">
+                icon 1
+              </p>
+              <p class="repost">
+                icon 2
+              </p>
+              <p class="like">
+                icon 3
+              </p>
+            </div>
+          </footer>
+        </article>
+
+      </section>
+
     </main>
   </body>
   
