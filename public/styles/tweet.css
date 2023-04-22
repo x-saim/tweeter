@@ -7,7 +7,6 @@ article.tweet:hover {
   box-shadow: 10px 10px 2px 1px rgba(0, 0, 255, .2);
 }
 
-
 article header {
   display: flex;
   flex-direction: row;
