@@ -28,6 +28,7 @@ article.tweet header img#avatar {
 article.tweet div.content {
   margin-left: 25px;
   margin-right: 25px;
+  font-weight: bold;
 }
 
 
