@@ -16,9 +16,15 @@ article header {
   justify-content: space-between;
 }
 
-article.tweet div.user-info {
+article.tweet .user-info {
   display: flex;
   flex-direction: row;
+  
+}
+
+.user-handle {
+  display: flex;
+  align-items: center;
 }
 
 article.tweet header img#avatar {
