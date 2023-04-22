@@ -3,23 +3,33 @@ article.tweet {
   border: 3px solid black;
 }
 
+article.tweet:hover {
+  box-shadow: 10px 10px 2px 1px rgba(0, 0, 255, .2);
+}
+
+
 article header {
   display: flex;
   flex-direction: row;
-  padding: 1em;
+  padding-top: 1em;
+  padding-right: 1em;
+  padding-left: 1em;
   justify-content: space-between;
 }
 
-article.tweet div.user-name {
+article.tweet div.user-info {
   display: flex;
   flex-direction: row;
 }
 
-article.tweet div.content {
-  margin-left: 15px;
-  margin-right: 15px;
+article.tweet header img#avatar {
+  margin-right: 10px;
 }
 
+article.tweet div.content {
+  margin-left: 25px;
+  margin-right: 25px;
+}
 
 
 article.tweet footer {
@@ -32,7 +42,27 @@ article.tweet footer {
   margin-right: 10px;
 }
 
-article.tweet footer div.icons {
+footer .icons {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  color: #224c96
+}
+
+article.tweet footer a.flag {
+  margin-right: 10px;
+}
+
+article.tweet footer a.like {
+  margin-left: 10px;
+}
+
+article.tweet footer .icons a.flag:hover {
+  color: #F9A03F;
+}
+article.tweet footer .icons a.retweet:hover {
+  color: #F9A03F;
+}
+article.tweet footer .icons a.like:hover {
+  color: #F9A03F;
 }
