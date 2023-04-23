@@ -50,7 +50,7 @@ $(document).ready(() => {
   const createTweetElement = (tweetObject) => {
     const $userName = $(`<p id="user-name">${tweetObject["user"]["name"]}</p>`);
     const $userHandle = $(`<a id="user-handle">${tweetObject.user.handle}</a>`);
-    const $avatars = $(`<img src="${tweetObject.user.avatars}" width="50" height="50">`);
+    const $avatars = $(`<img src="${tweetObject.user.avatars}" alt="my avatar" width="50" height="50">`);
     const $text = $(`<p>${tweetObject.content.text}</p>`);
     const $createdAt = $(`<p>${tweetObject.created_at}</p>`);
 
@@ -68,7 +68,7 @@ $(document).ready(() => {
     $userInfo.append($userName);
     $userHandleCont.append($userHandle);
 
-    //content structure
+    //tweet content structure
     const $content = $("<div>").addClass("content");
     $content.append($text);
 
@@ -109,20 +109,25 @@ $(document).ready(() => {
 
 $(function() {
 // jQuery
-$("#tweet-form").submit(function(e) {
-  e.preventDefault();
-  const tweetInput = $(this).serialize();
+  $("#tweet-form").submit(function(e) {
+    e.preventDefault();
+    const tweetInput = $(this).serialize();
 
-  $.ajax({
-    url: "/tweets",
-    method: 'POST',
-    data: tweetInput,
-    success: function(data) {
-      console.log(data);
-    },
-    error: (err) => console.error(err)
-    })
+    $.ajax({
+      url: "/tweets",
+      method: 'POST',
+      data: tweetInput,
+      success: function(data) {
+        console.log(data);
+      },
+      error: (err) => console.error(err)
+    });
   });
 
 });
+
+
+// const loadTweets  = () => {
+//   $.ajax()
+// }
 
