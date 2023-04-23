@@ -4,9 +4,6 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-
-
-
 $(document).ready(() => {
   console.log('ready');
   const tweetData = 
@@ -23,6 +20,9 @@ $(document).ready(() => {
     }
 
 const createTweetElement = (tweetObject) => {
+
+ // let relativeTime = moment(tweetObject["created_at"], "YYYYMMDD").fromNow();
+
   const $userName = $(`<p id="user-name">${tweetObject["user"]["name"]}</p>`);
   const $userHandle = $(`<a id="user-handle">${tweetObject["user"]["handle"]}</a>`);
   const $avatars = $(`<img src="${tweetObject["user"]["avatars"]}" width="50" height="50">`);
