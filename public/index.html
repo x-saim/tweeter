@@ -23,11 +23,12 @@
 
     <!-- External JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+    <script type="text/javascript" src="/vendor/moment-2.29.4.js"></script>
+
 
   </head>
 
@@ -49,7 +50,7 @@
 
     <header id="profile">
       <div>
-          <img id="profile-picture" src="/images/profile-hex.png"> 
+          <img id="profile-picture" src="/images/profile-hex.png" alt="My Profile Picture"> 
       </div>
       <br>
       <div>
@@ -72,11 +73,12 @@
         </div>
       </section>
 
+      <!-- This sectino/article is a container for individual tweets from the tweets database -->
       <section id="tweets-container">
         <article class="tweet">
           <header>
             <div class="user-info">
-              <img id="avatar" src="" width="50" height="50">
+              <img id="avatar" src="" alt="my avatar" width="50" height="50">
               <p id="user-name">User name</p>
             </div>
             <div class="user-handle">
