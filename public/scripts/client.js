@@ -111,12 +111,18 @@ $(function() {
 // jQuery
 $("#tweet-form").submit(function(e) {
   e.preventDefault();
-  const tweetContent = $(this).serialize();
-  console.log(tweetContent)
+  const tweetInput = $(this).serialize();
+
+  $.ajax({
+    url: "/tweets",
+    method: 'POST',
+    data: tweetInput,
+    success: function(data) {
+      console.log(data);
+    },
+    error: (err) => console.error(err)
+    })
+  });
+
 });
-
-
-
-});
-
 
