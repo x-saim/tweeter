@@ -4,6 +4,9 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+
+
+/* global document, $ */
 $(document).ready(() => {
   const data = [
     {
@@ -28,9 +31,9 @@ $(document).ready(() => {
       },
       "created_at": 1461113959088
     }
-  ]
+  ];
   
-/**
+  /**
  * Creates a tweet element based on the tweet object passed in.
  *
  * @param {Object} tweetObject - The tweet object containing information about the tweet.
@@ -89,7 +92,7 @@ $(document).ready(() => {
   };
 
 
-/**
+  /**
  * Renders an array of tweet objects by creating a tweet element for each one and appending it to the #tweets-container element.
  *
  * @param {Array} arrayTweetObjects - The array of tweet objects to be rendered.
@@ -99,8 +102,21 @@ $(document).ready(() => {
       const $tweet = createTweetElement(e);
       $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
     }
-  }
+  };
 
   renderTweets(data);
 });
+
+$(function() {
+// jQuery
+$("#tweet-form").submit(function(e) {
+  e.preventDefault();
+  let name = $(this).find("#tweet-text").val();
+  console.log(name);
+});
+
+
+
+});
+
 
