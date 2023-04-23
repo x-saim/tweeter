@@ -111,8 +111,8 @@ $(function() {
 // jQuery
 $("#tweet-form").submit(function(e) {
   e.preventDefault();
-  let name = $(this).find("#tweet-text").val();
-  console.log(name);
+  const tweetContent = $(this).serialize();
+  console.log(tweetContent)
 });
 
 
