@@ -25,7 +25,10 @@ $(document).ready(() => {
     const $userName = $(`<p id="user-name">${tweetObject["user"]["name"]}</p>`);
     const $userHandle = $(`<a id="user-handle">${tweetObject.user.handle}</a>`);
     const $avatars = $(`<img src="${tweetObject.user.avatars}" alt="my avatar" width="50" height="50">`);
-    const $text = $(`<p>${tweetObject.content.text}</p>`);
+    
+    //preventing XSS with escaping using .text method
+    const $text = $("<p>").text(tweetObject.content.text);
+
     const $createdAt = $(`<p>${timeago.format(tweetObject.created_at)}</p>`);
 
     //tweet container structure
@@ -74,7 +77,7 @@ $(document).ready(() => {
   const renderTweets = (arrayTweetObjects) => {
     for (const e of arrayTweetObjects) {
       const $tweet = createTweetElement(e);
-      $('#tweets-container').prepend($tweet); //adds to the top of the page
+      $('#tweets-container').prepend($tweet); //adds to the top of the tweet container
     }
   };
 
