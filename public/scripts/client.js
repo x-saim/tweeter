@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-/* global document, $,timeago */
+/* global document, $,timeago,alert */
 
 $(document).ready(() => {
   /**
@@ -74,7 +74,7 @@ $(document).ready(() => {
   const renderTweets = (arrayTweetObjects) => {
     for (const e of arrayTweetObjects) {
       const $tweet = createTweetElement(e);
-      $('#tweets-container').append($tweet); // to add it to the page so we can make sure it's got all the right elements, classes, etc.
+      $('#tweets-container').prepend($tweet); //adds to the top of the page
     }
   };
 
@@ -89,37 +89,39 @@ $(document).ready(() => {
    * @param {string} data - The tweet form data serialized as a string.
    * @param {function} success - A callback function to be executed if the request succeeds.
    * @param {function} error - A callback function to be executed if the request fails.
+   *
+   * Loads tweets from the server using jQuery GET request and renders them on the page. Renders the tweets on the page. Handles errors that occur during the GET request.
+   * @function loadTweets
    */
 
   $("#tweet-form").submit(function(e) {
     e.preventDefault();
+
+    const textInput = $(this).find('#tweet-text').val();
+
+    if (textInput === "" || textInput === null) {
+      alert("Erro: Unable to submit an empty tweet.");
+    } else if (textInput.length > 140) {
+      alert("Error: Unable to submit tweet. User passed character limit of 140.");
+    }
+
     const tweetInput = $(this).serialize();
-  
+
     $.ajax({
       url: "/tweets",
       method: 'POST',
       data: tweetInput,
       success: function() {
         console.log("Sucessfully sent POST request to server.");
+        const loadTweets  = () => {
+          $.get('/tweets')
+            .then(response =>  renderTweets(response))
+            .catch(err => console.log(err));
+        };
+        loadTweets();
       },
       error: (err) => console.error(err)
     });
   });
 
-  /**
- * Loads tweets from the server using jQuery GET request and renders them on the page. Renders the tweets on the page. Handles errors that occur during the GET request.
- *
- * @function
- * @param {Object[]} response - The tweet objects returned from the server.
-
- */
-  const loadTweets  = () => {
-    $.get('/tweets')
-      .then(response => renderTweets(response))
-      .catch(err => console.log(err));
-  };
-
-  loadTweets();
 });
-
-
