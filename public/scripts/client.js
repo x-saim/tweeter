@@ -4,35 +4,9 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+/* global document, $,timeago */
 
-
-/* global document, $ */
 $(document).ready(() => {
-  // const data = [
-  //   {
-  //     "user": {
-  //       "name": "Newton",
-  //       "avatars": "https://i.imgur.com/73hZDYK.png"
-  //       ,
-  //       "handle": "@SirIsaac"
-  //     },
-  //     "content": {
-  //       "text": "If I have seen further it is by standing on the shoulders of giants"
-  //     },
-  //     "created_at": 1461116232227
-  //   },
-  //   {
-  //     "user": {
-  //       "name": "Descartes",
-  //       "avatars": "https://i.imgur.com/nlhLi3I.png",
-  //       "handle": "@rd" },
-  //     "content": {
-  //       "text": "Je pense , donc je suis"
-  //     },
-  //     "created_at": 1461113959088
-  //   }
-  // ];
-  
   /**
  * Creates a tweet element based on the tweet object passed in.
  *
@@ -52,7 +26,7 @@ $(document).ready(() => {
     const $userHandle = $(`<a id="user-handle">${tweetObject.user.handle}</a>`);
     const $avatars = $(`<img src="${tweetObject.user.avatars}" alt="my avatar" width="50" height="50">`);
     const $text = $(`<p>${tweetObject.content.text}</p>`);
-    const $createdAt = $(`<p>${tweetObject.created_at}</p>`);
+    const $createdAt = $(`<p>${timeago.format(tweetObject.created_at)}</p>`);
 
     //tweet container structure
     const $tweet = $("<article>").addClass("tweet");
@@ -104,41 +78,48 @@ $(document).ready(() => {
     }
   };
 
-  //renderTweets(data);
+
+  /**
+   * Attach a submit event listener to the #tweet-form element and send a POST request to the /tweets endpoint with the serialized form data.
+   
+   * @function
+   * @param {Event} e - The submit event object.
+   * @param {string} url - The URL to send the request to.
+   * @param {string} method - The HTTP method to use for the request.
+   * @param {string} data - The tweet form data serialized as a string.
+   * @param {function} success - A callback function to be executed if the request succeeds.
+   * @param {function} error - A callback function to be executed if the request fails.
+   */
 
   $("#tweet-form").submit(function(e) {
     e.preventDefault();
     const tweetInput = $(this).serialize();
-
+  
     $.ajax({
       url: "/tweets",
       method: 'POST',
       data: tweetInput,
-      success: function(data) {
-        console.log(data);
+      success: function() {
+        console.log("Sucessfully sent POST request to server.");
       },
       error: (err) => console.error(err)
     });
   });
 
+  /**
+ * Loads tweets from the server using jQuery GET request and renders them on the page. Renders the tweets on the page. Handles errors that occur during the GET request.
+ *
+ * @function
+ * @param {Object[]} response - The tweet objects returned from the server.
+
+ */
   const loadTweets  = () => {
     $.get('/tweets')
-    .then(response => renderTweets(response))
-    .catch(err => console.log(err))
-  }
+      .then(response => renderTweets(response))
+      .catch(err => console.log(err));
+  };
 
   loadTweets();
-});
-
-/**
-
-Attach a submit event listener to the #tweet-form element and send a POST request to the /tweets endpoint with the serialized form data.
-
-@param {Event} e - The submit event object
-*/
-
-$(function() {
-  
 });
 
 
