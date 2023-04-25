@@ -103,7 +103,7 @@ $(document).ready(() => {
     const textInput = $(this).find('#tweet-text').val();
     const $errorElem = $("#error");
     if (textInput === "" || textInput === null) {
-      $errorElem.addClass("invalid").text("Error: Unable to submit an empty tweet.");
+      $errorElem.addClass("invalid").text("Error: Unable to submit an empty tweet.").slideDown();
       $.ajax({
         url:"/",
         method: "GET",
@@ -112,7 +112,7 @@ $(document).ready(() => {
         }
       })
     } else if (textInput.length > 140) {
-      $errorElem.addClass("invalid").text("Error: Unable to submit tweet. User passed character limit of 140.");
+      $errorElem.addClass("invalid").text("Error: Unable to submit tweet. User passed character limit of 140.").slideDown();
       $.ajax({
         url:"/",
         method: "GET",
@@ -120,6 +120,8 @@ $(document).ready(() => {
           console.log("Error: Unable to submit tweet. User passed character limit of 140.");
         }
       })
+    } else {
+      $errorElem.hide();
     }
 
     const tweetInput = $(this).serialize();
@@ -132,7 +134,7 @@ $(document).ready(() => {
         console.log("Sucessfully sent POST request to server.");
         const loadTweets  = () => {
           $.get('/tweets')
-            .then(response =>  renderTweets(response))
+            .then(response =>  {renderTweets(response)})
             .catch(err => console.log(err));
         };
         loadTweets();
