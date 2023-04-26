@@ -28,6 +28,11 @@ textarea {
   color: #FFFFFF;
 }
 
+#tweetButton:hover {
+  cursor: pointer;
+}
+
+
 .counter {
   font-weight: bold;
   font-family: 'Bungee', sans-serif;
