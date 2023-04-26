@@ -146,4 +146,9 @@ $(document).ready(() => {
     });
   });
 
+
+  $(".new-tweet-header").click(function() {
+    $(".new-tweet").toggle();
+  })
+
 });
