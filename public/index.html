@@ -40,12 +40,12 @@
         <span>tweeter</span>
       </div>
       <div class="new-tweet-header">
-        <p >
+        <p id="compose">
           <b>Write</b> a new tweet
         </p>
-        <p class="double-arrow-down">
+        <div class="floating">
           <i class="fa-solid fa-angles-down" style="color: #ff0000;"></i>
-        </p>
+    </div>
       </div>
     </nav>
 
@@ -69,7 +69,7 @@
           <form id="tweet-form" method="POST" action="/tweets" enctype="application/x-www-form-urlencoded">
             <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
             <div class="new-tweet-footer">
-              <button type="submit">Tweet
+              <button id="tweetButton" type="submit">Tweet
               </button>
                 <output name="counter" class="counter" for="tweet-text">140</output>
               </div>
