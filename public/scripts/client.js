@@ -134,7 +134,7 @@ $(document).ready(() => {
         console.log("Sucessfully sent POST request to server.");
         const loadTweets  = () => {
           $.get('/tweets')
-            .then(response =>  {renderTweets(response)})
+            .then(response =>  renderTweets(response))
             .catch(err => console.log(err));
         };
         loadTweets();
@@ -148,7 +148,7 @@ $(document).ready(() => {
 
 
   $(".new-tweet-header").click(function() {
-    $(".new-tweet").toggle();
+    $(".new-tweet").slideToggle();
   })
 
 });
