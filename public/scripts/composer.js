@@ -5,13 +5,17 @@ $(document).ready(function() {
   $(window).scroll(function() {
     if ($(this).scrollTop() > 20) {
       $('#topBtn').css("display","block");
+      $("nav").css("display","none");
     } else {
       $('#topBtn').css("display","none");
+      $("nav").css("display","flex");
     }
   })
 
   $("#topBtn").click(function() {
     $("html,body").animate({ scrollTop: 0 }, "slow");
+    $(".new-tweet").slideDown();
+    $("#tweet-text").focus();
     return false;
   })
 })
