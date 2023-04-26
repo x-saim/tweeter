@@ -1,0 +1,33 @@
+ 
+ 
+ @media only screen and (max-width: 767px) {
+  nav {
+    background-color: #F9A03F;
+  }
+  #compose {
+    background-color: #F9A03F;
+  }
+}
+
+ 
+ 
+ /* Another tablet breakpoint is minimum width of 768px */
+ @media only screen and (min-width: 768px) {
+
+  body {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #container {
+    margin-top: 200px;
+    width: 65%;
+  }
+
+  #profile {
+    margin-top: 200px;
+    margin-left: 100px;
+    width: 35%;
+    height: 400px;
+  }
+}
