@@ -80,8 +80,7 @@ $(document).ready(() => {
       $('#tweets-container').prepend($tweet); //adds to the top of the tweet container
     }
   };
-
-
+  
   /**
    * Attach a submit event listener to the #tweet-form element and send a POST request to the /tweets endpoint with the serialized form data.
    
@@ -146,9 +145,27 @@ $(document).ready(() => {
     });
   });
 
-
+  // Form toggle
   $(".new-tweet-header").click(function() {
     $(".new-tweet").slideToggle();
+    $("#tweet-text").focus();
   })
 
+  // Scroll event for back to the top button
+  // Show the button when the user scrolls down 20px from the top of the document
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 20) {
+      $('#topBtn').css("display","block");
+      console.log("scrolled, just button display to block");
+    } else {
+      $('#topBtn').css("display","none");
+      console.log("default, hide button");
+    }
+  })
+
+  $("#topBtn").click(function() {
+    $("html,body").animate({ scrollTop: 0 }, "slow");
+    console.log("scrolled up")
+    return false;
+  })
 });
