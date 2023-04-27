@@ -121,28 +121,27 @@ $(document).ready(() => {
       })
     } else {
       $errorElem.hide("slow");
+      const tweetInput = $(this).serialize();
+
+      $.ajax({
+        url: "/tweets",
+        method: 'POST',
+        data: tweetInput,
+        success: function() {
+          console.log("Sucessfully sent POST request to server.");
+          $('#tweet-text').val('');
+          const loadTweets  = () => {
+            $.get('/tweets')
+              .then(response => renderTweets(response))
+              .catch(err => console.log(err));
+          };
+          loadTweets();
+        },
+        error: (err) => {
+          console.error(err)
+        }
+      });
     }
-
-    const tweetInput = $(this).serialize();
-
-    $.ajax({
-      url: "/tweets",
-      method: 'POST',
-      data: tweetInput,
-      success: function() {
-        console.log("Sucessfully sent POST request to server.");
-        const loadTweets  = () => {
-          $.get('/tweets')
-            .then(response =>  renderTweets(response))
-            .catch(err => console.log(err));
-        };
-        loadTweets();
-      },
-      error: (err) => {
-        console.error(err)
-      }
-        
-    });
   });
 
   // Form toggle

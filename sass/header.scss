@@ -17,9 +17,12 @@ $secondary-color: white;
   font-family: 'Source Sans Pro', sans-serif;
   @include align-items-center;
 
-  #profile-picture {
+  img#profile-picture {
+    height: auto;
+    max-width: 250px;
     background-color: $background-color;
     background-image: url("https://www.transparenttextures.com/patterns/random-grey-variations.png");
+    overflow: hidden;
   
   }
 
