@@ -9,25 +9,26 @@
   }
 }
 
- 
- 
- /* Another tablet breakpoint is minimum width of 768px */
+
  @media only screen and (min-width: 768px) {
 
   body {
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
   }
 
-  #container {
-    margin-top: 200px;
-    width: 65%;
+  main {
+    width: 50%;
+    float: right;
+    margin-top: 150px;
+    margin-right: 25px;
   }
 
   #profile {
     margin-top: 200px;
-    margin-left: 100px;
-    width: 35%;
-    height: 400px;
+    float: left;
+    width: 30%;
+    margin-left: 25px;
   }
 }

@@ -37,23 +37,3 @@ body {
   margin-right: 5%;
   background-color: #f4f1ec;
  }
-
- #topBtn {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 10px;
-  z-index: 99;
-  font-size: 24px;
-  padding: 10px;
-  border-radius: 50%;
-  font-size: 40px;
-  color: white;
-  background-color: #4056A1;
-}
-
-#topBtn:hover {
-  cursor: pointer;
-  background-color:red;
-  color: white;
-}
