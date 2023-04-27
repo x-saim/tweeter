@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: center;
   background-color: #F9A03F;
+  background-image: url("https://www.transparenttextures.com/patterns/random-grey-variations.png");
   font-family: "Source Sans Pro", sans-serif;
   display: flex;
   align-items: center;
@@ -13,9 +14,6 @@
 #profile img#profile-picture {
   height: auto;
   max-width: 250px;
-  background-color: #F9A03F;
-  background-image: url("https://www.transparenttextures.com/patterns/random-grey-variations.png");
-  overflow: hidden;
 }
 #profile h2 {
   color: white;

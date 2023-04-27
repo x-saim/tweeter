@@ -1,11 +1,14 @@
 $background-color: #F9A03F;
+$background-image: url("https://www.transparenttextures.com/patterns/random-grey-variations.png");
  
  @media only screen and (max-width: 1023px) {
   nav {
     background-color: $background-color;
+    background-image: $background-image;
 
     #compose {
       background-color: $background-color;
+      background-image: $background-image;
     }
   }
   }

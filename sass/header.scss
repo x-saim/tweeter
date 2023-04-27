@@ -14,16 +14,14 @@ $secondary-color: white;
   flex-direction: column;
   justify-content: center;
   background-color: $background-color;
+  background-image: url("https://www.transparenttextures.com/patterns/random-grey-variations.png");
   font-family: 'Source Sans Pro', sans-serif;
   @include align-items-center;
+  
 
   img#profile-picture {
     height: auto;
-    max-width: 250px;
-    background-color: $background-color;
-    background-image: url("https://www.transparenttextures.com/patterns/random-grey-variations.png");
-    overflow: hidden;
-  
+    max-width: 250px;  
   }
 
   h2 {
