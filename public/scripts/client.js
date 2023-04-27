@@ -119,6 +119,7 @@ $(document).ready(() => {
           console.log("Error: Unable to submit tweet. User passed character limit of 140.");
         }
       })
+      //this conditional statement will clear any error notifications and sent POST req.
     } else {
       $errorElem.hide("slow");
       const tweetInput = $(this).serialize();
