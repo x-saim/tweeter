@@ -1,6 +1,11 @@
 $background-color: #F9A03F;
 $secondary-color: white;
 
+@mixin align-items-center {
+  display: flex;
+  align-items: center;
+}
+
 #profile {
   height: 400px; /* includes the hidden portion */
   width: 100%;
@@ -8,9 +13,9 @@ $secondary-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   background-color: $background-color;
   font-family: 'Source Sans Pro', sans-serif;
+  @include align-items-center;
 
   #profile-picture {
     background-color: $background-color;

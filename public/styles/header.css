@@ -5,9 +5,10 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   background-color: #F9A03F;
   font-family: "Source Sans Pro", sans-serif;
+  display: flex;
+  align-items: center;
 }
 #profile #profile-picture {
   background-color: #F9A03F;

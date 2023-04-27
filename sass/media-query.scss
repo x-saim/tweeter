@@ -3,12 +3,12 @@ $background-color: #F9A03F;
  @media only screen and (max-width: 767px) {
   nav {
     background-color: $background-color;
-  }
-  #compose {
-    background-color: $background-color;
-  }
-}
 
+    #compose {
+      background-color: $background-color;
+    }
+  }
+  }
 
  @media only screen and (min-width: 768px) {
 

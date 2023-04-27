@@ -1,3 +1,8 @@
+@mixin align-items-center {
+  display: flex;
+  align-items: center;
+}
+
 #topBtn {
   display: none;
   position: fixed;

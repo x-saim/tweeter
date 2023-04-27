@@ -2,7 +2,7 @@
   nav {
     background-color: #F9A03F;
   }
-  #compose {
+  nav #compose {
     background-color: #F9A03F;
   }
 }
@@ -21,7 +21,6 @@
   #profile {
     margin-top: 200px;
     float: left;
-    height: 322px;
     width: 30%;
     margin-left: 25px;
   }
