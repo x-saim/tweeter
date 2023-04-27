@@ -4,7 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
-/* global document, $,timeago,alert */
+/* global document, $,timeago */
 
 $(document).ready(() => {
   /**
@@ -109,7 +109,7 @@ $(document).ready(() => {
         success: function() {
           console.log("Error: Unable to submit an empty tweet.");
         }
-      })
+      });
     } else if (textInput.length > 140) {
       $errorElem.addClass("invalid").text("Error: Unable to submit tweet. User passed character limit of 140.").slideDown("slow");
       $.ajax({
@@ -118,7 +118,7 @@ $(document).ready(() => {
         success: function() {
           console.log("Error: Unable to submit tweet. User passed character limit of 140.");
         }
-      })
+      });
       //this conditional statement will clear any error notifications and sent POST req.
     } else {
       $errorElem.hide("slow");
@@ -139,7 +139,7 @@ $(document).ready(() => {
           loadTweets();
         },
         error: (err) => {
-          console.error(err)
+          console.error(err);
         }
       });
     }
@@ -149,6 +149,6 @@ $(document).ready(() => {
   $(".new-tweet-header").click(function() {
     $(".new-tweet").slideToggle();
     $("#tweet-text").focus();
-  })
+  });
   
 });
