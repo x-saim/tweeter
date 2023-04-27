@@ -1,4 +1,6 @@
-@media only screen and (max-width: 767px) {
+ 
+ 
+ @media only screen and (max-width: 767px) {
   nav {
     background-color: #F9A03F;
   }
@@ -6,18 +8,23 @@
     background-color: #F9A03F;
   }
 }
-@media only screen and (min-width: 768px) {
+
+
+ @media only screen and (min-width: 768px) {
+
   body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
   }
+
   main {
     width: 50%;
     float: right;
     margin-top: 150px;
     margin-right: 25px;
   }
+
   #profile {
     margin-top: 200px;
     float: left;
