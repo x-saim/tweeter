@@ -1,8 +1,7 @@
 .new-tweet {
   margin-top: 50px;
 }
-
-textarea {
+.new-tweet textarea {
   width: 100%;
   background: transparent;
   color: #000000;
@@ -14,33 +13,27 @@ textarea {
   border-bottom: 4px solid black;
   margin-bottom: 10px;
 }
-
-.new-tweet-footer {
+.new-tweet .new-tweet-footer {
   display: flex;
   justify-content: space-between;
 }
-
-#tweetButton {
+.new-tweet #tweetButton {
   background-color: #4056A1;
   font-size: 22px;
   font-family: "Bungee", sans-serif;
-  color: #FFFFFF;
+  color: white;
 }
-
-#tweetButton:hover {
+.new-tweet #tweetButton:hover {
   cursor: pointer;
 }
-
-.counter {
+.new-tweet .counter {
   font-weight: bold;
   font-family: "Bungee", sans-serif;
 }
-
-.counter.invalid {
+.new-tweet .counter.invalid {
   color: red;
 }
-
-#error.invalid {
+.new-tweet #error.invalid {
   color: #dc3545;
   font-size: 18px;
   font-weight: bold;

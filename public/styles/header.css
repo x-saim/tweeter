@@ -9,13 +9,11 @@
   background-color: #F9A03F;
   font-family: "Source Sans Pro", sans-serif;
 }
-
-header img#profile-picture {
+#profile #profile-picture {
   background-color: #F9A03F;
   background-image: url("https://www.transparenttextures.com/patterns/random-grey-variations.png");
 }
-
-header h2 {
+#profile h2 {
   color: white;
   font-size: 30px;
   margin-top: -30px;

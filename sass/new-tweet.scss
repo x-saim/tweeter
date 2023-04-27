@@ -1,54 +1,60 @@
+$primary-color: #4056A1;
+$secondary-color: white;
+$primary-font: sans-serif;
+$tweeter-font: 'Bungee';
+$background-color: #F9A03F;
+
 .new-tweet {
   margin-top: 50px;
-}
 
-textarea {
-  width: 100%;
-  background: transparent;
-  color: #000000;
-  font-weight:bold;
-  outline: none;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  border-bottom: 4px solid black;
-  margin-bottom: 10px;
-}
-
-.new-tweet-footer {
-  display: flex;
-  justify-content: space-between;
-}
+  textarea {
+    width: 100%;
+    background: transparent;
+    color: #000000;
+    font-weight:bold;
+    outline: none;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    border-bottom: 4px solid black;
+    margin-bottom: 10px;
+  }
 
 
-#tweetButton {
-  background-color: #4056A1;
-  font-size: 22px;
-  font-family: 'Bungee', sans-serif;
-  color: #FFFFFF;
-}
+  .new-tweet-footer {
+    display: flex;
+    justify-content: space-between;
+  }
 
-#tweetButton:hover {
-  cursor: pointer;
-}
+  #tweetButton {
+    background-color: $primary-color;
+    font-size: 22px;
+    font-family: $tweeter-font, $primary-font;
+    color: $secondary-color;
+  }
 
-.counter {
-  font-weight: bold;
-  font-family: 'Bungee', sans-serif;
-}
-
-.counter.invalid {
-  color:red;
-}
-
-#error.invalid{
-  color: #dc3545;
-  font-size: 18px;
-  font-weight: bold;
-  background-color: #f8d7da;
-  border: 1px solid #dc3545;
-  border-radius: 4px;
-  padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  #tweetButton:hover {
+    cursor: pointer;
+  }
+  
+  .counter {
+    font-weight: bold;
+    font-family: $tweeter-font, $primary-font;
+  }
+  
+  .counter.invalid {
+    color:red;
+  }
+  
+  #error.invalid{
+    color: #dc3545;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #f8d7da;
+    border: 1px solid #dc3545;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 }

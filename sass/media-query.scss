@@ -1,11 +1,11 @@
- 
+$background-color: #F9A03F;
  
  @media only screen and (max-width: 767px) {
   nav {
-    background-color: #F9A03F;
+    background-color: $background-color;
   }
   #compose {
-    background-color: #F9A03F;
+    background-color: $background-color;
   }
 }
 
