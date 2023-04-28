@@ -16,8 +16,13 @@ Users can create short posts of up to 140 characters and have them append to the
 
 ## App Views
 
+### Desktop App Flow
 ![Desktop App Flow](https://github.com/x-saim/tweeter/blob/master/docs/Animation1_DesktopView.gif?raw=true)
+
+### Error Handling
 ![Error Flow](https://github.com/x-saim/tweeter/blob/master/docs/Animation2_Errors.gif?raw=true)
+
+### Responsive Design
 ![Responsive Design](https://github.com/x-saim/tweeter/blob/master/docs/Animation3_Responsive.gif?raw=true)
 
 ## Dependencies
