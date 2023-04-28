@@ -123,7 +123,6 @@ $(document).ready(() => {
         method: 'POST',
         data: tweetInput,
         success: function() {
-          console.log("Sucessfully sent POST request to server.");
           $('#tweet-text').val('');
           const loadTweets  = () => {
             $.get('/tweets')
