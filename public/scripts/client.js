@@ -86,24 +86,11 @@ const loadTweets  = () => {
     .catch(err => console.log(err));
 };
 
-
-$(document).ready(function() {
-
-  //function call to load default tweets from database.
-  loadTweets();
-
-  /**
-   * Attach a submit event listener to the #tweet-form element and send a POST request to the /tweets endpoint with the serialized form data.
-   
-  */
-
-  $("#tweet-form").submit(function(e) {
-    e.preventDefault();
-
-    const textInput = $(this).find('#tweet-text').val();
-    const $errorElem = $("#error");
-    if (textInput === "" || textInput === null) {
-      $errorElem.addClass("invalid").text("Error: Unable to submit an empty tweet.").slideDown("slow");
+const errorsObj = {
+  error1: {
+    desc: "empty tweet",
+    emptyTweet: function() {
+      $("#error").addClass("invalid").text("Error: Unable to submit an empty tweet.").slideDown("slow");
       $.ajax({
         url:"/",
         method: "GET",
@@ -111,8 +98,12 @@ $(document).ready(function() {
           console.log("Error: Unable to submit an empty tweet.");
         }
       });
-    } else if (textInput.length > 140) {
-      $errorElem.addClass("invalid").text("Error: Unable to submit tweet. User passed character limit of 140.").slideDown("slow");
+  }
+  },
+  error2: {
+    desc: "tweet passed character limit",
+    longTweet: function() {
+      $("#error").addClass("invalid").text("Error: Unable to submit tweet. User passed character limit of 140.").slideDown("slow");
       $.ajax({
         url:"/",
         method: "GET",
@@ -120,6 +111,30 @@ $(document).ready(function() {
           console.log("Error: Unable to submit tweet. User passed character limit of 140.");
         }
       });
+    }
+  }
+}
+
+
+$(document).ready(function() {
+
+  //function call to load tweets from database.
+  loadTweets();
+
+  /**
+   * A submit event listener for the #tweet-form element to send a POST request to the /tweets endpoint with the serialized form data.
+   
+  */
+
+  $("#tweet-form").submit(function(e) {
+    e.preventDefault();
+
+    const textInput = $(this).find('#tweet-text').val();
+    //const $errorElem = $("#error");
+    if (textInput === "" || textInput === null) {
+      errorsObj.error1.emptyTweet();
+    } else if (textInput.length > 140) {
+      errorsObj.error2.longTweet();
 
       //this "else" conditional statement will clear any error notifications and send POST req to load updated tweet database.
     } else {
@@ -129,7 +144,7 @@ $(document).ready(function() {
         method: 'POST',
         data: $(this).serialize(),
         success: function() {
-          //sets the value of the textarea to empty upon POST req.
+          //sets the value of the textarea to empty.
           $('#tweet-text').val('');
           //sets the value of the counter to default value of 140.
           $(".counter").text("140");
