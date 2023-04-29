@@ -1,94 +1,101 @@
 /* global document, $,timeago */
 
-$(document).ready(() => {
-  /**
- * Creates a tweet element based on the tweet object passed in.
- *
- * @param {Object} tweetObject - The tweet object containing information about the tweet.
- * @param {Object} tweetObject.user - The user object containing information about the tweet author.
- * @param {string} tweetObject.user.name - The name of the tweet author.
- * @param {string} tweetObject.user.handle - The handle of the tweet author.
- * @param {string} tweetObject.user.avatars - The URL of the tweet author's avatar.
- * @param {Object} tweetObject.content - The content object containing information about the tweet content.
- * @param {string} tweetObject.content.text - The text of the tweet content.
- * @param {string} tweetObject.created_at - The date and time when the tweet was created.
- *
- * @returns {jQuery} Returns a jQuery object that represents the tweet element.
- */
-  const createTweetElement = (tweetObject) => {
-    const $userName = $(`<p id="user-name">${tweetObject["user"]["name"]}</p>`);
-    const $userHandle = $(`<a id="user-handle">${tweetObject.user.handle}</a>`);
-    const $avatars = $(`<img src="${tweetObject.user.avatars}" alt="my avatar" width="50" height="50">`);
-    
-    //preventing XSS with escaping using .text method
-    const $text = $("<p>").text(tweetObject.content.text);
+/**
+  * @function createTweetElement()
+  * Creates a tweet element based on the tweet object.
+  * @param {Object} tweetObject - The tweet object containing user information and tweet content.
+  * @param {Object} tweetObject.user - The user object containing user information.
+  * @param {string} tweetObject.user.name - The name of the user.
+  * @param {string} tweetObject.user.handle - The handle of the user.
+  * @param {string} tweetObject.user.avatars - The URL of the user's avatar image.
+  * @param {Object} tweetObject.content - The tweet content object.
+  * @param {string} tweetObject.content.text - The text content of the tweet.
+  * @param {string} tweetObject.created_at - The date and time when the tweet was created.
+  * @returns {JQuery<HTMLElement>} - A jQuery object representing the tweet element.
+  */
+const createTweetElement = (tweetObject) => {
+  const $userName = $(`<p id="user-name">${tweetObject["user"]["name"]}</p>`);
+  const $userHandle = $(`<a id="user-handle">${tweetObject.user.handle}</a>`);
+  const $avatars = $(`<img src="${tweetObject.user.avatars}" alt="my avatar" width="50" height="50">`);
 
-    const $createdAt = $(`<p>${timeago.format(tweetObject.created_at)}</p>`);
+  //preventing XSS with escaping using .text method
+  const $text = $("<p>").text(tweetObject.content.text);
 
-    //tweet container structure
-    const $tweet = $("<article>").addClass("tweet");
+  const $createdAt = $(`<p>${timeago.format(tweetObject.created_at)}</p>`);
 
-    //header structure
-    const $header = $("<header>");
-    const $userInfo = $("<div>").addClass("user-info");
-    const $userHandleCont = $("<div>").addClass("user-handle");
-    $header.append($userInfo).append($userHandleCont);
+  //tweet container structure
+  const $tweet = $("<article>").addClass("tweet");
 
-    //appending from tweet object
-    $userInfo.append($avatars);
-    $userInfo.append($userName);
-    $userHandleCont.append($userHandle);
+  //header structure
+  const $header = $("<header>");
+  const $userInfo = $("<div>").addClass("user-info");
+  const $userHandleCont = $("<div>").addClass("user-handle");
+  $header.append($userInfo).append($userHandleCont);
 
-    //tweet content structure
-    const $content = $("<div>").addClass("content");
-    $content.append($text);
+  //appending from tweet object
+  $userInfo.append($avatars);
+  $userInfo.append($userName);
+  $userHandleCont.append($userHandle);
 
-    //footer structure
-    const $footer = $("<footer>");
-    const $time = $("<div>").addClass("time");
-    const $icons = $("<div>").addClass("icons");
-    const $flag = $("<a>").addClass("flag").html(`<i class="fa-solid fa-flag"></i>`);
-    const $retweet = $("<a>").addClass("retweet").html(`<i class="fa-solid fa-retweet"></i>`);
-    const $like = $("<a>").addClass("like").html(`<i class="fa-solid fa-heart"></i>`);
-    $icons.append($flag).append($retweet).append($like);
-    $time.append($createdAt);
-    $footer.append($time).append($icons);
+  //tweet content structure
+  const $content = $("<div>").addClass("content");
+  $content.append($text);
 
-  
-    $tweet.append($header);
-    $tweet.append($content);
-    $tweet.append($footer);
-
-    return $tweet;
-  };
+  //footer structure
+  const $footer = $("<footer>");
+  const $time = $("<div>").addClass("time");
+  const $icons = $("<div>").addClass("icons");
+  const $flag = $("<a>").addClass("flag").html(`<i class="fa-solid fa-flag"></i>`);
+  const $retweet = $("<a>").addClass("retweet").html(`<i class="fa-solid fa-retweet"></i>`);
+  const $like = $("<a>").addClass("like").html(`<i class="fa-solid fa-heart"></i>`);
+  $icons.append($flag).append($retweet).append($like);
+  $time.append($createdAt);
+  $footer.append($time).append($icons);
 
 
-  /**
- * Renders an array of tweet objects by creating a tweet element for each one and appending it to the #tweets-container element.
- *
- * @param {Array} arrayTweetObjects - The array of tweet objects to be rendered.
- */
-  const renderTweets = (arrayTweetObjects) => {
-    for (const e of arrayTweetObjects) {
-      const $tweet = createTweetElement(e);
-      $('#tweets-container').prepend($tweet); //adds to the top of the tweet container
-    }
-  };
-  
+  $tweet.append($header);
+  $tweet.append($content);
+  $tweet.append($footer);
+
+  return $tweet;
+};
+
+/**
+* @function renderTweets()
+* Renders an array of tweet objects by creating a tweet element for each one and appending it to the #tweets-container element.
+* @param {Array} arrayTweetObjects - The array of tweet objects to be rendered.
+*/
+const renderTweets = (arrayTweetObjects) => {
+  //empties the tweets-container element in the HTML document. This will remove any previously rendered tweets to avoid duplication/repetition of tweet database.
+  $("#tweets-container").empty();
+  for (const e of arrayTweetObjects) {
+    const $tweet = createTweetElement(e);
+    //adds tweet to the top of the tweet container
+    $('#tweets-container').prepend($tweet);
+  }
+};
+
+/**
+* @function loadTweets
+* Loads tweets from the server using jQuery GET request and renders them on the page. Renders the tweets on the page. Handles errors that occur during the GET request.
+**/
+
+const loadTweets  = () => {
+  $.get('/tweets')
+    .then(res => renderTweets(res))
+    .catch(err => console.log(err));
+};
+
+
+$(document).ready(function() {
+
+  //function call to load default tweets from database.
+  loadTweets();
+
   /**
    * Attach a submit event listener to the #tweet-form element and send a POST request to the /tweets endpoint with the serialized form data.
    
-   * @function
-   * @param {Event} e - The submit event object.
-   * @param {string} url - The URL to send the request to.
-   * @param {string} method - The HTTP method to use for the request.
-   * @param {string} data - The tweet form data serialized as a string.
-   * @param {function} success - A callback function to be executed if the request succeeds.
-   * @param {function} error - A callback function to be executed if the request fails.
-   *
-   * Loads tweets from the server using jQuery GET request and renders them on the page. Renders the tweets on the page. Handles errors that occur during the GET request.
-   * @function loadTweets
-   */
+  */
 
   $("#tweet-form").submit(function(e) {
     e.preventDefault();
@@ -113,22 +120,19 @@ $(document).ready(() => {
           console.log("Error: Unable to submit tweet. User passed character limit of 140.");
         }
       });
-      //this conditional statement will clear any error notifications and sent POST req.
+
+      //this "else" conditional statement will clear any error notifications and send POST req to load updated tweet database.
     } else {
       $errorElem.hide("slow");
-      const tweetInput = $(this).serialize();
-
       $.ajax({
         url: "/tweets",
         method: 'POST',
-        data: tweetInput,
+        data: $(this).serialize(),
         success: function() {
+          //sets the value of the textarea to empty upon POST req.
           $('#tweet-text').val('');
-          const loadTweets  = () => {
-            $.get('/tweets')
-              .then(response => renderTweets(response))
-              .catch(err => console.log(err));
-          };
+          //sets the value of the counter to default value of 140.
+          $(".counter").text("140");
           loadTweets();
         },
         error: (err) => {
@@ -138,7 +142,9 @@ $(document).ready(() => {
     }
   });
 
-  // Form toggle
+  /* Tweet form toggle
+  * Enables the "Write a new tweet" block to create a toggle feature for the tweet form area, allowing it to become in focus and toggle on and off.
+  */
   $(".new-tweet-header").click(function() {
     $(".new-tweet").slideToggle();
     $("#tweet-text").focus();

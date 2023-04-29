@@ -1,10 +1,10 @@
 /* global document, $ */
 $(document).ready(function() {
-
+  const maxCharCount = 140;
   $(".new-tweet textarea").on("input", function() {
     //traverse down DOM Tree
     let counter = $(this).siblings(".new-tweet-footer").find(".counter");
-    let charCount = 140 - $(this).val().length;
+    let charCount = maxCharCount - $(this).val().length;
 
     //set new value to counter text
     counter.text(charCount);
