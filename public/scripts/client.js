@@ -77,7 +77,7 @@ const renderTweets = (arrayTweetObjects) => {
 
 /**
 * @function loadTweets
-* Loads tweets from the server using jQuery GET request and renders them on the page. Renders the tweets on the page. Handles errors that occur during the GET request.
+* Loads tweets from the server using jQuery GET request and renders them on the page. Handles errors that occur during the GET request.
 **/
 
 const loadTweets  = () => {
@@ -98,7 +98,7 @@ const errorsObj = {
           console.log("Error: Unable to submit an empty tweet.");
         }
       });
-  }
+    }
   },
   error2: {
     desc: "tweet passed character limit",
@@ -113,7 +113,7 @@ const errorsObj = {
       });
     }
   }
-}
+};
 
 
 $(document).ready(function() {
@@ -130,15 +130,15 @@ $(document).ready(function() {
     e.preventDefault();
 
     const textInput = $(this).find('#tweet-text').val();
-    //const $errorElem = $("#error");
+    const maxCharCount = 140;
     if (textInput === "" || textInput === null) {
       errorsObj.error1.emptyTweet();
-    } else if (textInput.length > 140) {
+    } else if (textInput.length > maxCharCount) {
       errorsObj.error2.longTweet();
 
-      //this "else" conditional statement will clear any error notifications and send POST req to load updated tweet database.
+      //this "else" conditional statement will hide any error notifications and send POST req to render submitted tweet.
     } else {
-      $errorElem.hide("slow");
+      $("#error").hide("slow");
       $.ajax({
         url: "/tweets",
         method: 'POST',
@@ -158,7 +158,7 @@ $(document).ready(function() {
   });
 
   /* Tweet form toggle
-  * Enables the "Write a new tweet" block to create a toggle feature for the tweet form area, allowing it to become in focus and toggle on and off.
+  * Enables the new-tweet-header block to create a toggle feature for the tweet form area, allowing it to become in focus and toggle on and off.
   */
   $(".new-tweet-header").click(function() {
     $(".new-tweet").slideToggle();
