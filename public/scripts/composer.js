@@ -8,13 +8,19 @@ $(document).ready(function() {
   $(window).scroll(function() {
     if ($(this).scrollTop() > 20) {
       $('#topBtn').css("display","block"); //enables the navigation to the top buttom
-      $("nav").css("background-color","transparent") //turns nav background transparant on scroll
+      $("nav").css("background-color","transparent"); //turns nav background transparant on scroll
+      $("nav").css("background-image","none");
       $(".new-tweet-header").hide(); //hides the compose block in nav on scroll
     } else {
       $('#topBtn').css("display","none");
-      $("nav").css("background-color","#4056A1")
       $(".new-tweet-header").show();
 
+      if (window.innerWidth < 1024) {
+        $("nav").css("background-color","#F9A03F");
+        $("nav").css("background-image","url('https://www.transparenttextures.com/patterns/random-grey-variations.png')");
+      } else {
+        $("nav").css("background-color","#4056A1");
+      }
     }
   });
 
@@ -27,9 +33,8 @@ $(document).ready(function() {
     $("html,body").animate({ scrollTop: 0 }, "slow");
     $(".new-tweet").slideDown();
     $("#tweet-text").focus();
-
-    $("nav").css("background-color","#4056A1")
     $(".new-tweet-header").show();
+    
     return false;
   });
 });
